@@ -11,7 +11,7 @@ Puedes descargarlo e instalarlo desde el sitio web oficial de Node.js(https://no
 2. Instalación de Dependencias
 Abre la terminal de tu Visual Studio Code.
 
-Navega hasta la carpeta donde descargaste y descomprimiste el proyecto (por ejemplo, cd C:\Usuarios\TuNombre\Descargas\38-Llaks).
+Navega hasta la carpeta donde descargaste y descomprimiste el proyecto (por ejemplo, cd C:\Usuarios\TuNombre\Descargas\3B-Llaks).
 
 Ejecuta el siguiente comando para instalar todas las librerías necesarias (como Express y SQLite3):
 
