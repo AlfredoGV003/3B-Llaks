@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>3B-Llaks Shop</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <h1 class="titulo">3B-LLAKS</h1>
+
+    <div class="search-container">
+        <input type="number" id="buscar-id" class="search-input" placeholder="Ingresa ID del producto" min="1">
+        <button id="btn-buscar" class="search-btn">Buscar</button>
+        <button id="btn-agregar" class="agre-button">Agregar</button>
+    </div>
+
+    <div class="product-container">
+        <div class="producto">
+            <img id="producto-img" src="" alt="Producto">
+            <h2 id="producto-nombre">Ingresa un ID para buscar</h2>
+            <p id="producto-categoria"></p>
+            <p id="producto-precio"></p>
+            <div class="producto-actions">
+                <button id="btn-comprar" class="comprar-btn">Comprar</button>
+                <button id="btn-eliminar" class="elim-button">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

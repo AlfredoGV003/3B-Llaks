@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Producto - 3B-Llaks Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="agregar.css">
+</head>
+<body>
+
+    <h1 class="titulo">Agregar Producto</h1>
+
+    <div class="form-container">
+        <form id="form-agregar">
+            <div class="form-group">
+                <label for="nombre">Nombre del Producto:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="categoria">Categoría:</label>
+                <input type="text" id="categoria" name="categoria" required>
+            </div>
+
+            <div class="form-group">
+                <label for="imagen">Nombre de la Imagen:</label>
+                <input type="text" id="imagen" name="imagen" placeholder="ejemplo.jpg" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-guardar">Guardar Producto</button>
+                <button type="button" class="btn-cancelar" onclick="window.location.href='index.html'">Cancelar</button>
+            </div>
+        </form> 
+    </div>
+
+    <script>
+        const formAgregar = document.getElementById('form-agregar');
+
+        formAgregar.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const nombre = document.getElementById('nombre').value.trim();
+            const precio = document.getElementById('precio').value.trim();
+            const categoria = document.getElementById('categoria').value.trim();
+            const imagen = document.getElementById('imagen').value.trim();
+
+            if (!nombre || !precio || !categoria || !imagen) {
+                alert('Por favor completa todos los campos');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/agregar-producto', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nombre: nombre,
+                        precio: parseFloat(precio),
+                        categoria: categoria,
+                        imagen: imagen
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert('Producto agregado correctamente');
+                    formAgregar.reset();
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 500);
+                } else {
+                    alert('Error al agregar: ' + data.error);
+                    console.error('Respuesta del servidor:', data);
+                }
+            } catch (error) {
+                alert('Error al conectar con el servidor');
+                console.error('Error detallado:', error);
+            }
+        });
+    </script>
+</body>
+</html>
